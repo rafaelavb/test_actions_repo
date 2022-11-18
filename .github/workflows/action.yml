@@ -1,8 +1,14 @@
 name: Check notification
 
 on:
-  push: {}
-  release: {}
+  push:
+    branches:
+      - main
+
+    paths-ignore:
+      - '**/README.md'
+
+  workflow_dispatch:
 
 jobs:
   success:
