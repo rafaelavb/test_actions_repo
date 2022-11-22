@@ -35,5 +35,5 @@ jobs:
         run: echo "${{ steps.check.outputs.output }}"
         if: "${{ steps.check.outputs.is_available_update == 'true' }}"
 
-      - name: Terraform Cloud Workspace Auto Update
-        uses: chroju/terraform-cloud-updater@v1
+      # - name: Terraform Cloud Workspace Auto Update
+      #   uses: chroju/terraform-cloud-updater@v1
