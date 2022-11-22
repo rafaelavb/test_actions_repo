@@ -7,5 +7,5 @@ terraform {
       name = "ws-XsivjRhD5wbpuQdE"
     }
   }
-  required_version = "1.3.5"
+  required_version = "> 0.12.0, <= 0.12.23"
 }
