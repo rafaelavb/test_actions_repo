@@ -1,18 +1,18 @@
-name: MS Teams Notification
-
-on: [push, pull_request]
-
+name: Check notification
+on:
+  push: {}
+  release: {}
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  success:
+    name: One with everything
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      # this is the new step using the ms-teams-notification action
-      - name: Notify dedicated teams channel
-        uses: jdcargile/ms-teams-notification@v1.3
+      - uses: actions/checkout@master
+      - name: Microsoft Teams Notification
+        uses: skitionek/notify-microsoft-teams@master
+        if: always()
         with:
-          github-token: ${{ github.token }} # this will use the runner's token.
-          ms-teams-webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
-          notification-summary: Your custom notification message
-          notification-color: 17a2b8
+          webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          needs: ${{ toJson(needs) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
