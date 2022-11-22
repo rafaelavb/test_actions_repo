@@ -30,7 +30,7 @@ jobs:
           comment_pr: true
         env:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: result
         run: echo "${{ steps.check.outputs.output }}"
         if: "${{ steps.check.outputs.is_available_update == 'true' }}"
