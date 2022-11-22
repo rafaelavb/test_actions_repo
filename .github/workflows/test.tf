@@ -4,7 +4,7 @@ terraform {
     organization = "RCS"
 
     workspaces {
-      name = "aws-aquiracloud-nonprod-apse2"
+      name = "ws-XsivjRhD5wbpuQdE"
     }
   }
   required_version = "1.3.5"
