@@ -1,4 +1,4 @@
-name: Check notification
+# name: Check notification
 # on:
 #   push: {}
 #   release: {}
