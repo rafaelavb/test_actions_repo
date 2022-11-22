@@ -18,5 +18,22 @@ jobs:
           steps: ${{ toJson(steps) }}
           dry_run: True
 
+  tf_cloud_update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: check update
+        id: check
+        uses: chroju/terraform-cloud-updater@v1
+        with:
+          working_dir: ./terraform
+          comment_pr: true
+        env:
+          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: result
+        run: echo "${{ steps.check.outputs.output }}"
+        if: "${{ steps.check.outputs.is_available_update == 'true' }}"
+
       - name: Terraform Cloud Workspace Auto Update
         uses: chroju/terraform-cloud-updater@v1
